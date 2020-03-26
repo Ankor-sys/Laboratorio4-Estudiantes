@@ -184,8 +184,8 @@ public class Ventana extends javax.swing.JFrame {
         try {
             String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_int", "newuser", "newuser");
-            PreparedStatement pst = cn.prepareStatement("update estudiantes set ID_Estudiante = ?, NombreEstudiante = ? , CorreoEstudiante = ?, Edad =?, NumeroCelular = ? where ID = " + ID);
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Cagada1234");
+            PreparedStatement pst = cn.prepareStatement("update estudiantes set ID_Estudiante = ?, NombreEstudiante = ? , CorreoEstudiante = ?, Edad =?, NumeroCelular = ? where ID_Estudiante = " + ID);
 
             pst.setString(1, txt_ID.getText().trim());
             pst.setString(2, txt_nombre.getText().trim());
@@ -204,7 +204,7 @@ public class Ventana extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Codigo que permite borrar registros en la base de datos
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_int", "newuser", "newuser");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Cagada1234");
             PreparedStatement pst = cn.prepareStatement("delete from estudiantes where ID_Estudiante = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
@@ -227,7 +227,7 @@ public class Ventana extends javax.swing.JFrame {
         //Codigo que permite consultar registros en la base de datos
         try{
             //local host y el nombre de la base de datos y la contraseñña
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_int", "newuser", "newuser");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Cagada1234");
             //Esto permitirá el buscar registro a traves del ID
             PreparedStatement pst = cn.prepareStatement("select * from estudiantes where ID_Estudiante = ?");
             //El parametro 1 es de que solo un ? esta llenando y entra lo del txt
@@ -257,9 +257,9 @@ public class Ventana extends javax.swing.JFrame {
         //Codigo que permite insertar registros en al base de datos
         try{
             //local host y el nombre de la base de datos y la contraseña
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_int", "root", "Cagada1234");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ins", "root", "Cagada1234");
             //Esto permitirá el insert
-            PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into estudiantes values(?,?,?,?,?)");
             //El primer parametro de cada setString es cada ?
             pst.setString(1, txt_ID.getText().trim());
             pst.setString(2, txt_nombre.getText().trim());
